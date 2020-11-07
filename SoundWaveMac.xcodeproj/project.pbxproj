@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		482F131B2555EF830079CF8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F131A2555EF830079CF8F /* AppDelegate.swift */; };
+		482F131D2555EF830079CF8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F131C2555EF830079CF8F /* ViewController.swift */; };
+		482F131F2555EF890079CF8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482F131E2555EF890079CF8F /* Assets.xcassets */; };
+		482F13222555EF890079CF8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482F13202555EF890079CF8F /* Main.storyboard */; };
+		482F13312555F0180079CF8F /* AudioContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F132D2555F0180079CF8F /* AudioContext.swift */; };
+		482F13322555F0180079CF8F /* AVAudioFileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F132E2555F0180079CF8F /* AVAudioFileExtensions.swift */; };
+		482F13332555F0180079CF8F /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F132F2555F0180079CF8F /* Chronometer.swift */; };
+		482F13342555F0180079CF8F /* JCKAudioVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F13302555F0180079CF8F /* JCKAudioVisualizationView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		482F13172555EF830079CF8F /* SoundWaveMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundWaveMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		482F131A2555EF830079CF8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		482F131C2555EF830079CF8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		482F131E2555EF890079CF8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		482F13212555EF890079CF8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		482F13232555EF890079CF8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		482F13242555EF8A0079CF8F /* SoundWaveMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SoundWaveMac.entitlements; sourceTree = "<group>"; };
+		482F132D2555F0180079CF8F /* AudioContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioContext.swift; sourceTree = "<group>"; };
+		482F132E2555F0180079CF8F /* AVAudioFileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioFileExtensions.swift; sourceTree = "<group>"; };
+		482F132F2555F0180079CF8F /* Chronometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
+		482F13302555F0180079CF8F /* JCKAudioVisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCKAudioVisualizationView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		482F13142555EF830079CF8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		482F130E2555EF830079CF8F = {
+			isa = PBXGroup;
+			children = (
+				482F13192555EF830079CF8F /* SoundWaveMac */,
+				482F13182555EF830079CF8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		482F13182555EF830079CF8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				482F13172555EF830079CF8F /* SoundWaveMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		482F13192555EF830079CF8F /* SoundWaveMac */ = {
+			isa = PBXGroup;
+			children = (
+				482F132C2555F0180079CF8F /* SoundWave */,
+				482F131A2555EF830079CF8F /* AppDelegate.swift */,
+				482F131C2555EF830079CF8F /* ViewController.swift */,
+				482F131E2555EF890079CF8F /* Assets.xcassets */,
+				482F13202555EF890079CF8F /* Main.storyboard */,
+				482F13232555EF890079CF8F /* Info.plist */,
+				482F13242555EF8A0079CF8F /* SoundWaveMac.entitlements */,
+			);
+			path = SoundWaveMac;
+			sourceTree = "<group>";
+		};
+		482F132C2555F0180079CF8F /* SoundWave */ = {
+			isa = PBXGroup;
+			children = (
+				482F132D2555F0180079CF8F /* AudioContext.swift */,
+				482F132E2555F0180079CF8F /* AVAudioFileExtensions.swift */,
+				482F132F2555F0180079CF8F /* Chronometer.swift */,
+				482F13302555F0180079CF8F /* JCKAudioVisualizationView.swift */,
+			);
+			path = SoundWave;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		482F13162555EF830079CF8F /* SoundWaveMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 482F13272555EF8A0079CF8F /* Build configuration list for PBXNativeTarget "SoundWaveMac" */;
+			buildPhases = (
+				482F13132555EF830079CF8F /* Sources */,
+				482F13142555EF830079CF8F /* Frameworks */,
+				482F13152555EF830079CF8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoundWaveMac;
+			productName = SoundWaveMac;
+			productReference = 482F13172555EF830079CF8F /* SoundWaveMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		482F130F2555EF830079CF8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					482F13162555EF830079CF8F = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = 482F13122555EF830079CF8F /* Build configuration list for PBXProject "SoundWaveMac" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 482F130E2555EF830079CF8F;
+			productRefGroup = 482F13182555EF830079CF8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				482F13162555EF830079CF8F /* SoundWaveMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		482F13152555EF830079CF8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482F131F2555EF890079CF8F /* Assets.xcassets in Resources */,
+				482F13222555EF890079CF8F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		482F13132555EF830079CF8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482F13332555F0180079CF8F /* Chronometer.swift in Sources */,
+				482F13342555F0180079CF8F /* JCKAudioVisualizationView.swift in Sources */,
+				482F131D2555EF830079CF8F /* ViewController.swift in Sources */,
+				482F131B2555EF830079CF8F /* AppDelegate.swift in Sources */,
+				482F13312555F0180079CF8F /* AudioContext.swift in Sources */,
+				482F13322555F0180079CF8F /* AVAudioFileExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		482F13202555EF890079CF8F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				482F13212555EF890079CF8F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		482F13252555EF8A0079CF8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		482F13262555EF8A0079CF8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		482F13282555EF8A0079CF8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SoundWaveMac/SoundWaveMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SoundWaveMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo..SoundWaveMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		482F13292555EF8A0079CF8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SoundWaveMac/SoundWaveMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SoundWaveMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo..SoundWaveMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		482F13122555EF830079CF8F /* Build configuration list for PBXProject "SoundWaveMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				482F13252555EF8A0079CF8F /* Debug */,
+				482F13262555EF8A0079CF8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		482F13272555EF8A0079CF8F /* Build configuration list for PBXNativeTarget "SoundWaveMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				482F13282555EF8A0079CF8F /* Debug */,
+				482F13292555EF8A0079CF8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 482F130F2555EF830079CF8F /* Project object */;
+}
