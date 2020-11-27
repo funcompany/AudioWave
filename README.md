@@ -1,12 +1,7 @@
-![SoundWave](Readme-Images/SoundWave.png)
 
-[![CI Status](http://img.shields.io/travis/bastienFalcou/SoundWave.svg?style=flat)](https://travis-ci.org/bastienFalcou/SoundWave)
-[![Version](https://img.shields.io/cocoapods/v/SoundWave.svg?style=flat)](http://cocoapods.org/pods/SoundWave)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Swift 5](https://img.shields.io/badge/Swift-5-orange.svg)
-[![License](https://img.shields.io/cocoapods/l/SoundWave.svg?style=flat)](http://cocoapods.org/pods/SoundWave)
+AudioWave is a customizable view representing sounds over time on macOS.
 
-SoundWaveMac is a customizable view representing sounds over time on macOS.
+It is derived from https://github.com/bastienFalcou/SoundWave/
 
 ## Features
 
@@ -113,3 +108,7 @@ self.audioVisualizationView.stop()
 ```
 
 As said before, you can also reset the view at any point calling `reset()`.
+
+### License
+
+AudioWave is available under the MIT license. See the LICENSE file for more info.
