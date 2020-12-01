@@ -79,6 +79,13 @@ The value needs to be **between 0 and 1**.
 ```swift
 self.audioVisualizationView.add(meteringLevel: 0.6)
 ```
+By setting sampleRate, you can change bar count.
+Its default value is 1, it means each meteringLevel value will be drawn as a single bar.
+If you set sampleRate greater than 1, several bar will be merged into one.
+
+```swift
+self.audioVisualizationView.sampleRate = 3
+```
 
 > You need to calculate a **percentage** of your decibel values, based on **minimum** and **maximum decibel number** of your recording system. 
 > If one value is above 1, the metering level bar will not be fully visible within the bounds of the view.

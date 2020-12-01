@@ -132,7 +132,7 @@ public class JCKAudioVisualizationView: NSView {
                 for j in 0 ..< sampleRate {
                     sum += self.meteringLevelsArray[index * sampleRate + j]
                 }
-                self.meteringLevelsClusteredArray.append(sum)
+                self.meteringLevelsClusteredArray.append(sum / Float(sampleRate))
             }
         }
         
