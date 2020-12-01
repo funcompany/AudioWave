@@ -40,6 +40,8 @@ public class JCKAudioVisualizationView: NSView {
 		}
 	}
 
+    public var sampleRate: Int = 1
+    
 	public var audioVisualizationMode: AudioVisualizationMode = .read
 
 	public var audioVisualizationTimeInterval: TimeInterval = 0.05 // Time interval between each metering bar representation
@@ -115,14 +117,27 @@ public class JCKAudioVisualizationView: NSView {
 
 	// MARK: - Record Mode Handling
 
-	public func add(meteringLevel: Float) {
-		guard self.audioVisualizationMode == .write else {
-			fatalError("trying to populate audio visualization view in read mode")
-		}
+    public func add(meteringLevel: Float) {
+        guard self.audioVisualizationMode == .write else {
+            fatalError("trying to populate audio visualization view in read mode")
+        }
 
-		self.meteringLevelsArray.append(meteringLevel)
-		self.setNeedsDisplay(bounds)
-	}
+        self.meteringLevelsArray.append(meteringLevel)
+        
+        if sampleRate > 1 {
+            self.meteringLevelsClusteredArray.removeAll()
+
+            for index in 0 ..< self.meteringLevelsArray.count / sampleRate {
+                var sum: Float = 0
+                for j in 0 ..< sampleRate {
+                    sum += self.meteringLevelsArray[index * sampleRate + j]
+                }
+                self.meteringLevelsClusteredArray.append(sum)
+            }
+        }
+        
+        self.setNeedsDisplay(bounds)
+    }
 
 	public func scaleSoundDataToFitScreen() -> [Float] {
 		if self.meteringLevelsArray.isEmpty {
