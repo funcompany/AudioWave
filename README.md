@@ -93,8 +93,6 @@ self.audioVisualizationView.reset()
 
 ### Play existing array of metering levels
 
-![Play](Readme-Images/Play.gif)
-
 The `JCKAudioVisualizationView` can take an array of metering levels to play. Those levels are all gathered in its `meteringLevelsArray` property, array of Float values again **between 0 and 1**.
 If there are **not enough** / **too many** values to fit the screen, those values will be respectively **extrapolated** / **clustered** in order to cover nicely the whole width of the screen.
 
