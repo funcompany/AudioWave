@@ -7,21 +7,25 @@
 
 import Cocoa
 
+@available(OSX 10.15, *)
 class ViewController: NSViewController {
 
     
     @IBOutlet weak var audioWaveView: JCKAudioVisualizationView!
     @IBOutlet weak var toggleButton: NSButton!
+    @IBOutlet weak var addSameValueSwitch: NSSwitch!
     
     private var timer: Timer? = nil
-    private var duration: TimeInterval = 0
     private var isRecording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        audioWaveView.audioVisualizationTimeInterval = 0.1
+        audioWaveView.gradientStartColor = NSColor.red
+        audioWaveView.gradientEndColor = NSColor.red
+        audioWaveView.meteringLevelBarSingleStick = true
+        audioWaveView.meteringLevelBarInterItem = 4
     }
 
     // MARK: - Recording
@@ -30,13 +34,12 @@ class ViewController: NSViewController {
         
         audioWaveView.reset()
         audioWaveView.audioVisualizationMode = .write
-        
-        duration = 0
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (_) in
-            let power = Float(Int.random(in: 0 ... 100)) / Float(100)
+        audioWaveView.sampleRate = 1
+
+        let isSame = addSameValueSwitch.state == .on
+        timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { [weak self] (_) in
+            let power:Float = isSame ? 0.1 : Float(Int.random(in: 0 ... 100)) / Float(100)
             self?.audioWaveView.add(meteringLevel: power)
-            
-            self?.duration += 0.1
         })
     }
     
@@ -45,6 +48,8 @@ class ViewController: NSViewController {
             timer.invalidate()
             self.timer = nil
         }
+        
+        audioWaveView.stop()
     }
     
     // MARK: - UI Action
@@ -54,11 +59,13 @@ class ViewController: NSViewController {
             
             isRecording = false
             toggleButton.title = "Start"
+            addSameValueSwitch.isEnabled = true
         } else {
             startRecording()
             
             isRecording = true
             toggleButton.title = "Stop"
+            addSameValueSwitch.isEnabled = false
         }
     }
 }
