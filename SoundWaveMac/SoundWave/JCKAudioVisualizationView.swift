@@ -62,7 +62,8 @@ public class JCKAudioVisualizationView: NSView {
 	}
 
 	private var playChronometer: Chronometer?
-
+    private var offsetX: CGFloat = 0
+    
 	public var meteringLevels: [Float]? {
 		didSet {
 			if let meteringLevels = self.meteringLevels {
@@ -108,6 +109,9 @@ public class JCKAudioVisualizationView: NSView {
 	}
 
 	public func reset() {
+        self.animationTimer?.invalidate()
+        self.animationTimer = nil
+        
 		self.meteringLevels = nil
 		self.currentGradientPercentage = nil
 		self.meteringLevelsClusteredArray.removeAll()
@@ -122,11 +126,25 @@ public class JCKAudioVisualizationView: NSView {
             fatalError("trying to populate audio visualization view in read mode")
         }
 
+        self.animationTimer?.invalidate()
+        self.animationTimer = nil
+        self.offsetX = 0
+        
+        let dt: TimeInterval
+        let now = Date()
+        if self.lastAddedTime != nil {
+            dt = now.timeIntervalSince(self.lastAddedTime)
+        } else {
+            dt = 0
+        }
+        self.lastAddedTime = now
+        
         self.meteringLevelsArray.append(meteringLevel)
         
         if sampleRate > 1 {
             self.meteringLevelsClusteredArray.removeAll()
 
+            let remained = self.meteringLevelsArray.count % sampleRate
             for index in 0 ..< self.meteringLevelsArray.count / sampleRate {
                 var sum: Float = 0
                 for j in 0 ..< sampleRate {
@@ -134,11 +152,40 @@ public class JCKAudioVisualizationView: NSView {
                 }
                 self.meteringLevelsClusteredArray.append(sum / Float(sampleRate))
             }
+            if remained > 0 {
+                var sum: Float = 0
+                let index = self.meteringLevelsArray.count / sampleRate * sampleRate
+                for j in 0 ..< remained {
+                    sum += self.meteringLevelsArray[index + j]
+                }
+                self.meteringLevelsClusteredArray.append(sum / Float(remained))
+            }
         }
         
         self.setNeedsDisplay(bounds)
+        
+        let offset = max(self.currentMeteringLevelsArray.count - self.maximumNumberBars, 0)
+        if offset > 0, dt > 0, (self.meteringLevelsArray.count % self.sampleRate == 0) {
+            let moveStepCount: Int = 20
+            let moveDistance = (self.meteringLevelBarWidth + self.meteringLevelBarInterItem)
+            let moveStep = moveDistance / CGFloat(moveStepCount)
+                animationTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(dt) * TimeInterval(sampleRate) / TimeInterval(moveStepCount), repeats: true, block: { [weak self] (_) in
+                guard let this = self else { return }
+
+                this.offsetX -= moveStep
+                this.setNeedsDisplay(this.bounds)
+
+                if this.offsetX <= -moveDistance {
+                    this.animationTimer?.invalidate()
+                    this.animationTimer = nil
+                }
+            })
+        }
     }
 
+    private var animationTimer: Timer? = nil
+    private var lastAddedTime: Date! = nil
+    
 	public func scaleSoundDataToFitScreen() -> [Float] {
 		if self.meteringLevelsArray.isEmpty {
 			return []
@@ -231,6 +278,9 @@ public class JCKAudioVisualizationView: NSView {
 	}
 
 	public func stop() {
+        self.animationTimer?.invalidate()
+        self.animationTimer = nil
+        
 		self.playChronometer?.stop()
 		self.playChronometer = nil
 
@@ -276,7 +326,7 @@ public class JCKAudioVisualizationView: NSView {
 
         autoreleasepool {
             let maskImage = makeMask(with: bounds.size)
-            context.clip(to: self.bounds, mask: maskImage.cgImage!)
+            context.clip(to: self.bounds, mask: maskImage._cgImage!)
             self.drawGradient(inContext: context)
         }
         
@@ -349,25 +399,49 @@ public class JCKAudioVisualizationView: NSView {
 	private func drawBar(_ barIndex: Int, meteringLevelIndex: Int, levelBarType: LevelBarType, context: CGContext) {
 		context.saveGState()
 
-		let xPointForMeteringLevel = self.xPointForMeteringLevel(barIndex)
-		let heightForMeteringLevel = self.heightForMeteringLevel(self.currentMeteringLevelsArray[meteringLevelIndex])
-
+		let xPointForMeteringLevel = offsetX + self.xPointForMeteringLevel(barIndex)
+        
+        var widthForMeteringLevel = self.meteringLevelBarWidth
+		var heightForMeteringLevel = self.heightForMeteringLevel(self.currentMeteringLevelsArray[meteringLevelIndex])
+        
+        let rightX: CGFloat
+        if (self.currentMeteringLevelsArray.count > self.maximumNumberBars) {
+            rightX = self.xPointForMeteringLevel(self.maximumNumberBars - 1)
+        } else {
+            rightX = self.xPointForMeteringLevel(self.currentMeteringLevelsArray.count - 1)
+        }
+        
+        let dx = rightX - xPointForMeteringLevel
+        let tx = self.frame.size.width / 20
+        if dx <= tx {
+            let weight = dx / tx
+            widthForMeteringLevel *= weight
+            heightForMeteringLevel *= weight
+        }
+        
+        if widthForMeteringLevel < 1 {
+            widthForMeteringLevel = 1
+        }
+        if heightForMeteringLevel < 1 {
+            heightForMeteringLevel = 1
+        }
+        
         let barRect: NSRect
 		switch levelBarType {
 		case .upper:
 			barRect = NSRect(x: xPointForMeteringLevel,
 							 y: self.centerY - heightForMeteringLevel,
-							 width: self.meteringLevelBarWidth,
+							 width: widthForMeteringLevel,
 							 height: heightForMeteringLevel)
 		case .lower:
 			barRect = NSRect(x: xPointForMeteringLevel,
 							 y: self.centerY,
-							 width: self.meteringLevelBarWidth,
+							 width: widthForMeteringLevel,
 							 height: heightForMeteringLevel)
 		case .single:
 			barRect = NSRect(x: xPointForMeteringLevel,
 							 y: self.centerY - heightForMeteringLevel,
-							 width: self.meteringLevelBarWidth,
+							 width: widthForMeteringLevel,
 							 height: heightForMeteringLevel * 2)
 		}
 
@@ -406,8 +480,8 @@ public class JCKAudioVisualizationView: NSView {
 	}
 }
 
-extension NSImage {
-    var cgImage: CGImage? {
+fileprivate extension NSImage {
+    var _cgImage: CGImage? {
         var imageRect = NSMakeRect(0, 0, self.size.width, self.size.height)
         let cgImage = self.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
         return cgImage

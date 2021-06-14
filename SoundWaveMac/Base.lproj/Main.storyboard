@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -717,7 +717,7 @@
                                 </constraints>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2hJ-yE-YgT">
-                                <rect key="frame" x="205" y="23" width="70" height="32"/>
+                                <rect key="frame" x="366" y="23" width="70" height="32"/>
                                 <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wVN-hd-6UR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -726,16 +726,32 @@
                                     <action selector="onToggle:" target="XfG-lQ-9wD" id="VAg-S4-4ul"/>
                                 </connections>
                             </button>
+                            <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="vdn-mH-uvi">
+                                <rect key="frame" x="48" y="28" width="42" height="24"/>
+                            </switch>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HO0-FF-Wrd">
+                                <rect key="frame" x="94" y="33" width="107" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Add same values" id="JnK-9t-oUP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2hJ-yE-YgT" secondAttribute="trailing" constant="50" id="GRw-2i-X0u"/>
                             <constraint firstItem="uDd-OL-yNn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="U97-m2-aqU"/>
+                            <constraint firstItem="vdn-mH-uvi" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="50" id="UT1-j1-bXW"/>
                             <constraint firstItem="uDd-OL-yNn" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="asV-Dx-JZ2"/>
-                            <constraint firstItem="2hJ-yE-YgT" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="wAd-QV-V44"/>
+                            <constraint firstItem="vdn-mH-uvi" firstAttribute="centerY" secondItem="2hJ-yE-YgT" secondAttribute="centerY" id="fzO-YA-1S2"/>
+                            <constraint firstItem="HO0-FF-Wrd" firstAttribute="leading" secondItem="vdn-mH-uvi" secondAttribute="trailing" constant="8" id="qgQ-nj-axj"/>
                             <constraint firstAttribute="trailing" secondItem="uDd-OL-yNn" secondAttribute="trailing" constant="20" id="yrH-8K-Qou"/>
                             <constraint firstAttribute="bottom" secondItem="2hJ-yE-YgT" secondAttribute="bottom" constant="30" id="zWM-ax-5p4"/>
+                            <constraint firstItem="HO0-FF-Wrd" firstAttribute="centerY" secondItem="vdn-mH-uvi" secondAttribute="centerY" id="zbR-Gf-tBx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addSameValueSwitch" destination="vdn-mH-uvi" id="TWD-pM-9ex"/>
                         <outlet property="audioWaveView" destination="uDd-OL-yNn" id="4Sh-80-Wwi"/>
                         <outlet property="toggleButton" destination="2hJ-yE-YgT" id="dL2-Iw-uzB"/>
                     </connections>
